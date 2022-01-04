@@ -1,0 +1,38 @@
+GeocodeCallback(
+{
+    "authenticationResultCode":"ValidCredentials",
+    "brandLogoUri":"http:\/\/dev.virtualearth.net\/Branding\/logo_powered_by.png",
+    "copyright":"Copyright © 2022 Microsoft and its suppliers. All rights reserved. This API cannot be accessed and the content and any results may not be used, reproduced or transmitted in any manner without express written permission from Microsoft Corporation.",
+    "resourceSets":[
+        {
+            "estimatedTotal":1,
+            "resources":[
+                {
+                    "__type":"Location:http:\/\/schemas.microsoft.com\/search\/local\/ws\/rest\/v1",
+                    "bbox":[10.79205,106.70975,10.79385,106.71159],"name":"Đường Ngô Tất Tố 22, Ho Chi Minh City, Ho Chi Minh City, 72323",
+                    "point":{"type":"Point",
+                        "coordinates":[10.79295,106.71067]},
+                        "address":{
+                            "addressLine":"22 Đường Ngô Tất Tố",
+                            "adminDistrict":"Ho Chi Minh City",
+                            "adminDistrict2":"Ho Chi Minh City",
+                            "countryRegion":"Vietnam",
+                            "formattedAddress":"Đường Ngô Tất Tố 22, Ho Chi Minh City, Ho Chi Minh City, 72323",
+                            "locality":"Ho Chi Minh City",
+                            "postalCode":"72323"},
+                            "confidence":"High",
+                            "entityType":"Address",
+                            "geocodePoints":[
+                                {
+                                    "type":"Point",
+                                    "coordinates":[10.79295,106.71067],
+                                    "calculationMethod":"None",
+                                    "usageTypes":["Display"]},{
+                                        "type":"Point",
+                                        "coordinates":[10.79299,106.71068],
+                                        "calculationMethod":"None",
+                                        "usageTypes":["Route"]}],
+                                        "matchCodes":["Good"]}]}],
+                                        "statusCode":200,
+                                        "statusDescription":"OK",
+                                        "traceId":"be4a0ca0d47d422fa9b3830b90719d30|PUS0004C6E|0.0.0.1|Ref A: C82D319E3D824DB982273EDC432C265E Ref B: SEL20EDGE0516 Ref C: 2022-01-04T20:18:09Z"})
