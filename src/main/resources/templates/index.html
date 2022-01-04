@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Reference to the Bing Maps SDK -->
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+
+    <script type='text/javascript'>
+        function GetMap(longt, lat)
+        {
+            var map = new Microsoft.Maps.Map('#myMap', {
+                credentials: 'AqMU_WLYuMvR5-tOzVQVdALZIiJi9-C4_DRZGNKoMGAaEOPGTCyES-Bmx9ov5zWV',
+                center: new Microsoft.Maps.Location(longt,lat),
+                mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+                zoom: 20
+            });
+
+
+        }
+        var BingMapsKey = 'AqMU_WLYuMvR5-tOzVQVdALZIiJi9-C4_DRZGNKoMGAaEOPGTCyES-Bmx9ov5zWV';
+
+
+
+        function geocode() {
+            var query = document.getElementById('input').value;
+
+            var geocodeRequest = "http://dev.virtualearth.net/REST/v1/Locations?query=" + encodeURIComponent(query) + "&jsonp=GeocodeCallback&key=" + BingMapsKey;
+
+            CallRestService(geocodeRequest, GeocodeCallback);
+        }
+
+        function GeocodeCallback(response) {
+            var output = document.getElementById('output');
+
+            if (response &&
+                response.resourceSets &&
+                response.resourceSets.length > 0 &&
+                response.resourceSets[0].resources) {
+
+                var results = response.resourceSets[0].resources;
+
+                var html = ['<table><tr><td>Name</td><td>Latitude</td><td>Longitude</td></tr>'];
+
+                for (var i = 0; i < results.length; i++) {
+                    html.push('<tr><td>', results[i].name, '</td><td>', results[i].point.coordinates[0], '</td><td>', results[i].point.coordinates[1], '</td></tr>');
+                }
+
+                html.push('</table>');
+
+                output.innerHTML = html.join('');
+                GetMap(results[0].point.coordinates[0], results[0].point.coordinates[1]);
+            } else {
+                output.innerHTML = "No results found.";
+            }
+        }
+
+        function CallRestService(request) {
+            var script = document.createElement("script");
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("src", request);
+            document.body.appendChild(script);
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="input" value="New York" />
+<input type="button" onClick="geocode()" value="Search" /><br />
+<div id="output"></div>
+<div id="myMap" style="position:relative;width:1500px;height:1000px;" onload="GetMap"></div>
+</body>
+</html>
